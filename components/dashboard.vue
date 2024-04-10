@@ -1,16 +1,16 @@
 <template>
   <div style="width: 100%; height: 100%; display: flex;">
     <div class="cmda-palette" style="flex: 1; position: relative;">
-      <div ref="canvasDashboard" class="canvas" style="width: 100%; height: 100%;"></div>
-      <div class="buttons" :style="[{right: minimapFlag ? '160px' : '20px', top: minimapFlag ? '18px' : '20px'}]">
+      <div ref="canvasDashboard" class="canvas"></div>
+      <div class="buttons" :style="[{right: buttonGroupFloatRight, top: buttonGroupFloatTop}]">
         <li v-if="bpmnFlag">
-          <a href="javascript:" ref="saveXML" title="保存为bpmn">下载BPMN</a>
+          <a href="javascript:" ref="saveXML" title="保存为bpmn">{{ customTranslate('xml') }}</a>
         </li>
         <li v-if="svgFlag">
-          <a href="javascript:" ref="saveSvg" title="保存为svg">下载SVG</a>
+          <a href="javascript:" ref="saveSvg" title="保存为svg">{{ customTranslate('svg') }}</a>
         </li>
-        <li>
-          <button @click="workflowDeploy">流程发布</button>
+        <li v-if="deployFlag">
+          <button @click="workflowDeploy"></button>
         </li>
       </div>
     </div>
@@ -47,6 +47,10 @@ export default {
       type: Boolean,
       default: false
     },
+    deployFlag: {
+      type: Boolean,
+      default: false
+    },
     minimapFlag: {
       type: Boolean,
       default: false
@@ -64,6 +68,35 @@ export default {
     xmlStr(newVal, oldVal) {
       if (newVal !== '') {
         this.getWorkflowXml()
+      }
+    }
+  },
+  computed: {
+    isZhCn() {
+      return this.$camundaEebConfig.locale === 'zh-cn'
+    },
+    buttonGroupFloatRight() {
+      if (this.minimapFlag) {
+        if (this.isZhCn) {
+          return '116px'
+        } else {
+          return '140px'
+        }
+      } 
+      else {
+        return '20px'
+      }
+    },
+    buttonGroupFloatTop() {
+      if (this.minimapFlag) {
+        if (this.isZhCn) {
+          return '25px'
+        } else {
+          return '26px'
+        }
+      } 
+      else {
+        return '20px'
       }
     }
   },
@@ -95,6 +128,33 @@ export default {
         this.xmlUrl = DEFAULT_XML
         this.generatorWorkflowImg()
       }
+    },
+    customTranslate(type) {
+      let result = ''
+      switch(type) {
+        case 'xml':
+          if (this.isZhCn) {
+            result = '下载BPMN'
+          } else {
+            result = 'Download BPMN'
+          }
+          break
+        case 'svg':
+          if (this.isZhCn) {
+            result = '下载SVG'
+          } else {
+            result = 'Download SVG'
+          }
+        case 'deploy':
+        if (this.isZhCn) {
+            result = '流程发布'
+          } else {
+            result = 'Process Deploy'
+          }
+        default:
+          break
+      }
+      return result
     },
     getWorkflowXml() {
       this.xmlUrl = this.xmlStr
@@ -138,7 +198,7 @@ export default {
       if (!this.minimapFlag) {
         additionConfig.minimap = ['value', '']
       }
-      if ('zh-cn' === this.$camundaEebConfig.locale) {
+      if (this.isZhCn) {
         additionConfig.translate = ['value', customTranslate]
       }
       this.bpmnViewer = new window.BpmnModeler({
@@ -269,23 +329,7 @@ export default {
 </script>
 
 <style scoped>
-.canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0 25px;
-}
-.canvas .nodeSuccess:not(.djs-connection) .djs-visual > :nth-child(1) {
-  stroke: #f70e0e !important;
-  stroke-width: 2px !important;
-}
->>> .bjs-container > .bjs-powered-by
-{
-  display: none !important;
-}
-
+@import url(../utils/comm.css);
 .cmda-palette .buttons {
   position: absolute;
   right: 20px;

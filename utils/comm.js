@@ -390,6 +390,8 @@ export const translationsGerman = {
     'Specify more than one group as a comma separated list.':'指定多个组,用逗号分隔',
     'Specify more than one user as a comma separated list.':'指定多个用户,用逗号分隔',
     'This maps to the process definition key.':'这会映射为流程定义的键',
+    'Open minimap': '打开小地图',
+    'Close minimap': '关闭小地图',
     'CallActivity Type':'调用活动类型',
     'Condition Type':'条件类型',
     'Condition Expression':'条件表达式',

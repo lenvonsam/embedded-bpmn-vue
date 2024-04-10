@@ -1,0 +1,21 @@
+@charset "utf-8";
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.canvas .djs-minimap {
+  z-index: 20;
+}
+
+.canvas .bjs-breadcrumbs,
+.canvas .bjs-powered-by {
+  display: none;
+}
+.canvas .nodeSuccess:not(.djs-connection) .djs-visual > :nth-child(1) {
+  stroke: #f70e0e !important;
+  stroke-width: 2px !important;
+}

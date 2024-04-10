@@ -132,25 +132,10 @@ export default {
 </script>
 
 <style scoped>
-.canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0 25px;
-}
-.canvas .bjs-breadcrumbs,
-.canvas .bjs-powered-by {
-  display: none;
-}
-.canvas .nodeSuccess:not(.djs-connection) .djs-visual > :nth-child(1) {
-  stroke: #f70e0e !important;
-  stroke-width: 2px !important;
-}
->>> .bjs-container > .bjs-powered-by,
->>> .bjs-container > .djs-container > .djs-minimap,
->>> .bjs-container > .djs-container > .djs-palette.open {
+@import url(../utils/comm.css);
+>>>.bjs-container > .bjs-powered-by,
+>>>.bjs-container > .djs-container > .djs-minimap,
+>>>.bjs-container > .djs-container > .djs-palette.open {
   display: none !important;
 }
 </style>
