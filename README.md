@@ -2,6 +2,12 @@
 
 Embedded bpmn modeling distributions based on [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [camunda-bpmn-js](https://github.com/camunda/camunda-bpmn-js), default bpmn model type is Camunda. It can be applicable to Vue2.x, Vue3.x and Nuxt(ssr framework).
 
+> Advantages
+>
+> - There is no need to consider Node versions, Vue versions, and Vue framework compatibility issues
+> - Let the user focus on the process rather than the basic configuration
+> - Support multiple languages (English, Chinese) to meet the needs of more users
+
 ## Installation
 
 - via npm
@@ -96,6 +102,7 @@ Option|Required|Type|Default|Description|
 ```
 
 **Preview**
+
 ![alt text](shots/image_dashboard.png)
 
 **Dashboard Component Properties**

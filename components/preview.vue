@@ -21,7 +21,6 @@ export default {
   watch: {
     xmlStr(newVal, oldVal) {
       if (newVal !== '') {
-        console.log('xml str:>> val:>>', newVal)
         this.getWorkflowXml()
       }
     }

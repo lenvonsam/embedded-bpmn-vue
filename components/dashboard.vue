@@ -211,7 +211,6 @@ export default {
         ],
       })
       try {
-        console.log('import xml:>>', this.xmlUrl)
         await this.bpmnViewer.importXML(this.xmlUrl)
         const canvas = self.bpmnViewer.get('canvas')
         canvas.zoom('fit-viewport', 'auto')
@@ -300,11 +299,9 @@ export default {
       }
     },
     async workflowDeploy() {
-      console.log('workflow deploy click')
       try {
         const result = await this.bpmnViewer.saveXML({ format: true }, null);
-        console.log('deploy xml:>>', result)
-        this.$emit('deploy', result.xml)
+        this.$emit('deploy', {xml: result.xml, fileName: this.getFilename(result.xml)})
       } catch(err) {
         console.log(err)
       }
@@ -350,4 +347,4 @@ export default {
 }
 
 
-</style>../shots/utils/comm../shots/utils/customTranslate
+</style>
