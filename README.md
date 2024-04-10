@@ -71,7 +71,7 @@ Option|Required|Type|Default|Description|
 
 **Preview**
 
-![alt text](shots/image.png)
+![alt text](./shots/image.png)
 
 #### Dashboard Component Usage
 
@@ -103,7 +103,7 @@ Option|Required|Type|Default|Description|
 
 **Preview**
 
-![alt text](shots/image_dashboard.png)
+![alt text](./shots/image_dashboard.png)
 
 **Dashboard Component Properties**
 Property|Required|Type|Default|Description|
