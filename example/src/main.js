@@ -4,7 +4,7 @@ import EmbeddedBpmnVue from '../../index'
 
 Vue.config.productionTip = false
 Vue.use(EmbeddedBpmnVue, {
-  // locale: 'zh-cn'
+  locale: 'zh-cn'
 })
 
 new Vue({

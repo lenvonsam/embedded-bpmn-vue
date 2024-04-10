@@ -1,6 +1,6 @@
 {
   "name": "embedded-bpmn-vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Embeddable modeling distributions based on bpmn-js. bpmn-js's default modeling is for Camunda",
   "author": {
     "name": "samy"

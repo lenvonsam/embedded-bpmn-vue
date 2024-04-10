@@ -10,7 +10,7 @@
           <a href="javascript:" ref="saveSvg" title="保存为svg">{{ customTranslate('svg') }}</a>
         </li>
         <li v-if="deployFlag">
-          <button @click="workflowDeploy"></button>
+          <button @click="workflowDeploy">{{ customTranslate('deploy') }}</button>
         </li>
       </div>
     </div>
