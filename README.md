@@ -4,22 +4,22 @@ Embedded bpmn modeling distributions based on [bpmn-js](https://github.com/bpmn-
 
 > Advantages
 >
-> - There is no need to consider Node versions, Vue versions, and Vue framework compatibility issues
-> - Let the user focus on the process rather than the basic configuration
-> - Support multiple languages (English, Chinese) to meet the needs of more users
+> - ✅ There is no need to consider Node versions, Vue versions, and Vue framework compatibility issues
+> - ✅ Let the user focus on the process rather than the basic configuration
+> - ✅ Support multiple languages (English, Chinese) to meet the needs of more users
 
 ## Installation
 
 - via npm
 
 ```bash
-$root npm install embedded-bpmn-vue
+npm install embedded-bpmn-vue
 ```
 
 - via yarn
 
 ```bash
-$root yarn add embedded-bpmn-vue
+yarn add embedded-bpmn-vue
 ```
 
 ## Usage
@@ -51,21 +51,21 @@ Option|Required|Type|Default|Description|
 
 #### Preview Component Usage
 
-```html
+```vue
 <template>
   <div style="height: 400px; width: 100%; position: relative;">
     <cem-preview :xml-str="xmlStr" />
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        // camunda bpmn xml
-        xmlStr: '',
-      }
-    },
-  }
+export default {
+  data() {
+    return {
+      // camunda bpmn xml
+      xmlStr: '',
+    }
+  },
+}
 </script>
 ```
 
@@ -75,29 +75,29 @@ Option|Required|Type|Default|Description|
 
 #### Dashboard Component Usage
 
-```html
+```vue
 <template>
   <div style="height: 600px; width: 100%; position:relative;">
     <cem-dashboard :xml-str="xmlStr" @deploy="dashBoardDeploy"></cem-dashboard>
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        // camunda bpmn xml, default start event xml
-        xmlStr: '',
-      }
+export default {
+  data() {
+    return {
+      // camunda bpmn xml, default start event xml
+      xmlStr: '',
+    }
+  },
+  methods: {
+    // deploy bpmn to server
+    dashBoardDeploy({ xml, fileName }) {
+      // TODO you need to invoke the server-side deploy API to implement the deployment functionality
+      console.log('deploy xml:>>', xml)
+      console.log('deploy xml file name:>>', fileName)
     },
-    methods: {
-      // deploy bpmn to server
-      dashBoardDeploy({ xml, fileName }) {
-        // TODO you need to invoke the server-side deploy API to implement the deployment functionality
-        console.log('deploy xml:>>', xml)
-        console.log('deploy xml file name:>>', fileName)
-      },
-    },
-  }
+  },
+}
 </script>
 ```
 
@@ -117,7 +117,8 @@ Property|Required|Type|Default|Description|
 **Dashboard Component Methods**
 Method|Params|Description|
 |---|:---:|---|
-|deploy|{xml, fileName}| deploy button callback function for custom deployment to yourself bpmn server-side|
+|deploy|{xml, fileName, processName}| deploy button callback function for custom deployment to yourself bpmn server-side|
+|cmdChange|event| make bpmn event - 'commandStack.changed' callback|
 
 ## Related
 

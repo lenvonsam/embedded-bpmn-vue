@@ -4,13 +4,13 @@
       <div ref="canvasDashboard" class="canvas"></div>
       <div class="buttons" :style="[{right: buttonGroupFloatRight, top: buttonGroupFloatTop}]">
         <li v-if="bpmnFlag">
-          <a href="javascript:" ref="saveXML" title="保存为bpmn">{{ customTranslate('xml') }}</a>
+          <a href="javascript:" ref="saveXML" title="保存为bpmn">{{ customerTranslate('xml') }}</a>
         </li>
         <li v-if="svgFlag">
-          <a href="javascript:" ref="saveSvg" title="保存为svg">{{ customTranslate('svg') }}</a>
+          <a href="javascript:" ref="saveSvg" title="保存为svg">{{ customerTranslate('svg') }}</a>
         </li>
         <li v-if="deployFlag">
-          <button @click="workflowDeploy">{{ customTranslate('deploy') }}</button>
+          <button @click="workflowDeploy">{{ customerTranslate('deploy') }}</button>
         </li>
       </div>
     </div>
@@ -90,7 +90,7 @@ export default {
     buttonGroupFloatTop() {
       if (this.minimapFlag) {
         if (this.isZhCn) {
-          return '25px'
+          return '18px'
         } else {
           return '26px'
         }
@@ -129,7 +129,7 @@ export default {
         this.generatorWorkflowImg()
       }
     },
-    customTranslate(type) {
+    customerTranslate(type) {
       let result = ''
       switch(type) {
         case 'xml':
@@ -145,12 +145,14 @@ export default {
           } else {
             result = 'Download SVG'
           }
+          break
         case 'deploy':
-        if (this.isZhCn) {
+          if (this.isZhCn) {
             result = '流程发布'
           } else {
             result = 'Process Deploy'
           }
+          break
         default:
           break
       }
@@ -258,7 +260,10 @@ export default {
       const downloadLink = this.$refs.saveXML;
       const downloadSvgLink = this.$refs.saveSvg;
 
-      async function opscoffee() {
+      async function opscoffee(e) {
+        if (e) {
+          that.$emit('cmdChange', e)
+        }
         try {
           const result = await that.saveSVG();
           const { svg } = result;
@@ -301,7 +306,7 @@ export default {
     async workflowDeploy() {
       try {
         const result = await this.bpmnViewer.saveXML({ format: true }, null);
-        this.$emit('deploy', {xml: result.xml, fileName: this.getFilename(result.xml)})
+        this.$emit('deploy', {xml: result.xml, fileName: this.getFilename(result.xml), processName: this.getProcessName(result.xml)})
       } catch(err) {
         console.log(err)
       }
@@ -313,6 +318,13 @@ export default {
         link.href = "data:application/bpmn20-xml;charset=UTF-8," + encodedData;
         link.download = name;
       }
+    },
+    getProcessName(xml) {
+      let start = xml.indexOf("process");
+      let processName = xml.substr(start);
+      processName = processName.substr(processName.indexOf("name") + 6);
+      processName = processName.substr(0, processName.indexOf('"'));
+      return processName;
     },
     getFilename(xml) {
       let start = xml.indexOf("process");
