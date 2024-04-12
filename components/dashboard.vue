@@ -90,7 +90,7 @@ export default {
     buttonGroupFloatTop() {
       if (this.minimapFlag) {
         if (this.isZhCn) {
-          return '18px'
+          return '17px'
         } else {
           return '26px'
         }
@@ -343,10 +343,14 @@ export default {
   position: absolute;
   right: 20px;
   top: 20px;
+  height: 47px;
 }
 .cmda-palette .buttons li {
   display: inline-block;
   margin: 5px;
+}
+.cmda-palette .buttons li a {
+  display: inline-block;
 }
 .cmda-palette .buttons li a,
 .cmda-palette .buttons li button {
@@ -356,6 +360,9 @@ export default {
   padding: 8px;
   border: 1px solid #ccc;
   text-decoration: none;
+}
+.cmda-palette .buttons li button {
+  height: 38px;
 }
 
 
