@@ -24,7 +24,13 @@ yarn add embedded-bpmn-vue
 
 ## Online Demo
 
+### Mobile/Pad visit recommendation
+
 ![alt text](./shots/demo_qr.png)
+
+### Pc visit recommendation
+
+https://lenvonsam.github.io/embedded-bpmn-vue/
 
 ## Usage
 
