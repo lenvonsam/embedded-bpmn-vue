@@ -22,6 +22,10 @@ npm install embedded-bpmn-vue
 yarn add embedded-bpmn-vue
 ```
 
+## Online Demo
+
+![alt text](./shots/demo_qr.png)
+
 ## Usage
 
 This project is designed to deliver different BPMN modeling distributions. Instead of creating custom Modeler implementations based on [bpmn-js](https://github.com/bpmn-io/bpmn-js), choose one of the existing packages to mirror the modeling experience of [Camunda's modeling](https://github.com/camunda/camunda-modeler/) products.
